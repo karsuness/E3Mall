@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.e3mall.mapper.TbItemParamItemMapper" >
-  <resultMap id="BaseResultMap" type="com.e3mall.pojo.TbItemParamItem" >
+  <resultMap id="BaseResultMap" type="com.e3mall.common.pojo.TbItemParamItem" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="item_id" property="itemId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.e3mall.pojo.TbItemParamItem" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.e3mall.common.pojo.TbItemParamItem" extends="BaseResultMap" >
     <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -74,7 +74,7 @@
   <sql id="Blob_Column_List" >
     param_data
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.e3mall.pojo.TbItemParamItemExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.e3mall.common.pojo.TbItemParamItemExample" >
     select
     <if test="distinct" >
       distinct
@@ -90,7 +90,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.pojo.TbItemParamItemExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.common.pojo.TbItemParamItemExample" >
     select
     <if test="distinct" >
       distinct
@@ -116,19 +116,19 @@
     delete from tb_item_param_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.e3mall.pojo.TbItemParamItemExample" >
+  <delete id="deleteByExample" parameterType="com.e3mall.common.pojo.TbItemParamItemExample" >
     delete from tb_item_param_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.e3mall.pojo.TbItemParamItem" >
+  <insert id="insert" parameterType="com.e3mall.common.pojo.TbItemParamItem" >
     insert into tb_item_param_item (id, item_id, created, 
       updated, param_data)
     values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{paramData,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.e3mall.pojo.TbItemParamItem" >
+  <insert id="insertSelective" parameterType="com.e3mall.common.pojo.TbItemParamItem" >
     insert into tb_item_param_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.e3mall.pojo.TbItemParamItemExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.e3mall.common.pojo.TbItemParamItemExample" resultType="java.lang.Integer" >
     select count(*) from tb_item_param_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -215,7 +215,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.pojo.TbItemParamItem" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.common.pojo.TbItemParamItem" >
     update tb_item_param_item
     <set >
       <if test="itemId != null" >
@@ -233,7 +233,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.e3mall.pojo.TbItemParamItem" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.e3mall.common.pojo.TbItemParamItem" >
     update tb_item_param_item
     set item_id = #{itemId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
@@ -241,7 +241,7 @@
       param_data = #{paramData,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.e3mall.pojo.TbItemParamItem" >
+  <update id="updateByPrimaryKey" parameterType="com.e3mall.common.pojo.TbItemParamItem" >
     update tb_item_param_item
     set item_id = #{itemId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},

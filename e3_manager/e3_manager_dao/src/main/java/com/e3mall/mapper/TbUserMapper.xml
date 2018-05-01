@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.e3mall.mapper.TbUserMapper" >
-  <resultMap id="BaseResultMap" type="com.e3mall.pojo.TbUser" >
+  <resultMap id="BaseResultMap" type="com.e3mall.common.pojo.TbUser" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, username, password, phone, email, created, updated
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.pojo.TbUserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.common.pojo.TbUserExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from tb_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.e3mall.pojo.TbUserExample" >
+  <delete id="deleteByExample" parameterType="com.e3mall.common.pojo.TbUserExample" >
     delete from tb_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.e3mall.pojo.TbUser" >
+  <insert id="insert" parameterType="com.e3mall.common.pojo.TbUser" >
     insert into tb_user (id, username, password, 
       phone, email, created, 
       updated)
@@ -109,7 +109,7 @@
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.e3mall.pojo.TbUser" >
+  <insert id="insertSelective" parameterType="com.e3mall.common.pojo.TbUser" >
     insert into tb_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.e3mall.pojo.TbUserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.e3mall.common.pojo.TbUserExample" resultType="java.lang.Integer" >
     select count(*) from tb_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.pojo.TbUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.common.pojo.TbUser" >
     update tb_user
     <set >
       <if test="username != null" >
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.e3mall.pojo.TbUser" >
+  <update id="updateByPrimaryKey" parameterType="com.e3mall.common.pojo.TbUser" >
     update tb_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

@@ -1,8 +1,8 @@
 package com.e3mall.mapper;
 
 
-import com.e3mall.pojo.TbContent;
-import com.e3mall.pojo.TbContentExample;
+import com.e3mall.common.pojo.TbContent;
+import com.e3mall.common.pojo.TbContentExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

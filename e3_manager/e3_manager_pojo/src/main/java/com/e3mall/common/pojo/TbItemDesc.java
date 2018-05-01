@@ -1,26 +1,16 @@
-package com.e3mall.pojo;
+package com.e3mall.common.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class TbItemParamItem implements Serializable {
-    private Long id;
-
+public class TbItemDesc implements Serializable{
     private Long itemId;
 
     private Date created;
 
     private Date updated;
 
-    private String paramData;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String itemDesc;
 
     public Long getItemId() {
         return itemId;
@@ -46,11 +36,11 @@ public class TbItemParamItem implements Serializable {
         this.updated = updated;
     }
 
-    public String getParamData() {
-        return paramData;
+    public String getItemDesc() {
+        return itemDesc;
     }
 
-    public void setParamData(String paramData) {
-        this.paramData = paramData == null ? null : paramData.trim();
+    public void setItemDesc(String itemDesc) {
+        this.itemDesc = itemDesc == null ? null : itemDesc.trim();
     }
 }

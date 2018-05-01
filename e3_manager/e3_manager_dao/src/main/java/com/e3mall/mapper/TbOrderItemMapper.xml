@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.e3mall.mapper.TbOrderItemMapper" >
-  <resultMap id="BaseResultMap" type="com.e3mall.pojo.TbOrderItem" >
+  <resultMap id="BaseResultMap" type="com.e3mall.common.pojo.TbOrderItem" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="item_id" property="itemId" jdbcType="VARCHAR" />
     <result column="order_id" property="orderId" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     id, item_id, order_id, num, title, price, total_fee, pic_path
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.pojo.TbOrderItemExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.common.pojo.TbOrderItemExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from tb_order_item
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.e3mall.pojo.TbOrderItemExample" >
+  <delete id="deleteByExample" parameterType="com.e3mall.common.pojo.TbOrderItemExample" >
     delete from tb_order_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.e3mall.pojo.TbOrderItem" >
+  <insert id="insert" parameterType="com.e3mall.common.pojo.TbOrderItem" >
     insert into tb_order_item (id, item_id, order_id, 
       num, title, price, total_fee, 
       pic_path)
@@ -110,7 +110,7 @@
       #{num,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, #{totalFee,jdbcType=BIGINT}, 
       #{picPath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.e3mall.pojo.TbOrderItem" >
+  <insert id="insertSelective" parameterType="com.e3mall.common.pojo.TbOrderItem" >
     insert into tb_order_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.e3mall.pojo.TbOrderItemExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.e3mall.common.pojo.TbOrderItemExample" resultType="java.lang.Integer" >
     select count(*) from tb_order_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.pojo.TbOrderItem" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.common.pojo.TbOrderItem" >
     update tb_order_item
     <set >
       <if test="itemId != null" >
@@ -244,7 +244,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.e3mall.pojo.TbOrderItem" >
+  <update id="updateByPrimaryKey" parameterType="com.e3mall.common.pojo.TbOrderItem" >
     update tb_order_item
     set item_id = #{itemId,jdbcType=VARCHAR},
       order_id = #{orderId,jdbcType=VARCHAR},

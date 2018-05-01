@@ -1,6 +1,6 @@
 package com.e3mall.controller;
 
-import com.e3mall.pojo.EasyUITreeNode;
+import com.e3mall.common.pojo.EasyUITreeNode;
 import com.e3mall.service.ItemCatService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

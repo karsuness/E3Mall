@@ -1,7 +1,8 @@
 package com.e3mall.controller;
 
-import com.e3mall.pojo.EasyUIDataGridResult;
-import com.e3mall.pojo.TbItem;
+import com.e3mall.common.pojo.EasyUIDataGridResult;
+import com.e3mall.common.pojo.TbItem;
+import com.e3mall.common.util.E3Result;
 import com.e3mall.service.ItemService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,14 @@ public class ItemController {
     public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
         //调用服务查询商品列表
         EasyUIDataGridResult result = itemService.getItemList(page, rows);
+        return result;
+    }
+
+    @ApiOperation(notes = "后台商品添加",value = "/save")
+    @RequestMapping(value="/save", method=RequestMethod.POST)
+    @ResponseBody
+    public E3Result addItem(TbItem item, String desc) {
+        E3Result result = itemService.addItem(item, desc);
         return result;
     }
 }

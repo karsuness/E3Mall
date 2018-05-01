@@ -5,7 +5,7 @@ package com.e3mall.service;
  * @since 2018/5/1 15:46
  */
 
-import com.e3mall.pojo.EasyUITreeNode;
+import com.e3mall.common.pojo.EasyUITreeNode;
 
 import java.util.List;
 

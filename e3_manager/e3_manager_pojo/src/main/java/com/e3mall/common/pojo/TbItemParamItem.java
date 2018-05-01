@@ -1,12 +1,12 @@
-package com.e3mall.pojo;
+package com.e3mall.common.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class TbItemParam implements Serializable {
+public class TbItemParamItem implements Serializable {
     private Long id;
 
-    private Long itemCatId;
+    private Long itemId;
 
     private Date created;
 
@@ -22,12 +22,12 @@ public class TbItemParam implements Serializable {
         this.id = id;
     }
 
-    public Long getItemCatId() {
-        return itemCatId;
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setItemCatId(Long itemCatId) {
-        this.itemCatId = itemCatId;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
     public Date getCreated() {

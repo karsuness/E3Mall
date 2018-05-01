@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.e3mall.mapper.TbContentMapper" >
-  <resultMap id="BaseResultMap" type="com.e3mall.pojo.TbContent" >
+  <resultMap id="BaseResultMap" type="com.e3mall.common.pojo.TbContent" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="category_id" property="categoryId" jdbcType="BIGINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
@@ -13,7 +13,7 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.e3mall.pojo.TbContent" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.e3mall.common.pojo.TbContent" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -80,7 +80,7 @@
   <sql id="Blob_Column_List" >
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.e3mall.pojo.TbContentExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.e3mall.common.pojo.TbContentExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,7 +96,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.pojo.TbContentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.e3mall.common.pojo.TbContentExample" >
     select
     <if test="distinct" >
       distinct
@@ -122,13 +122,13 @@
     delete from tb_content
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.e3mall.pojo.TbContentExample" >
+  <delete id="deleteByExample" parameterType="com.e3mall.common.pojo.TbContentExample" >
     delete from tb_content
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.e3mall.pojo.TbContent" >
+  <insert id="insert" parameterType="com.e3mall.common.pojo.TbContent" >
     insert into tb_content (id, category_id, title, 
       sub_title, title_desc, url, 
       pic, pic2, created, 
@@ -138,7 +138,7 @@
       #{pic,jdbcType=VARCHAR}, #{pic2,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.e3mall.pojo.TbContent" >
+  <insert id="insertSelective" parameterType="com.e3mall.common.pojo.TbContent" >
     insert into tb_content
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -211,7 +211,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.e3mall.pojo.TbContentExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.e3mall.common.pojo.TbContentExample" resultType="java.lang.Integer" >
     select count(*) from tb_content
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -291,7 +291,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.pojo.TbContent" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.e3mall.common.pojo.TbContent" >
     update tb_content
     <set >
       <if test="categoryId != null" >
@@ -327,7 +327,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.e3mall.pojo.TbContent" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.e3mall.common.pojo.TbContent" >
     update tb_content
     set category_id = #{categoryId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
@@ -341,7 +341,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.e3mall.pojo.TbContent" >
+  <update id="updateByPrimaryKey" parameterType="com.e3mall.common.pojo.TbContent" >
     update tb_content
     set category_id = #{categoryId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
