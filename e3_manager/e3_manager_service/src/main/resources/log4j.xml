@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="null"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://jakarta.apache.org/log4j/ ">
+
+    <!-- 日志输出级别 -->
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="defaultAppender"/>
+        <appender-ref ref="errorAppender"/>
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+    <!-- common-default.log -->
+    <appender name="defaultAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="D:/workspace/E3Mall/logs/manager/common-default.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="INFO"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!--打印到控制台-->
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <!-- 设置日志输出的样式 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- 设置日志输出的格式 -->
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- common-error.log -->
+    <appender name="errorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="D:/workspace/E3Mall/logs/manager/common-error.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <param name="threshold" value="error"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 将日志信息输出到文件，可以配置多久产生一个新的日志信息文件 -->
+    <appender name="DailyRollingFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- 设置日志信息输出文件全路径名 -->
+        <param name="File" value="D:/workspace/E3Mall/logs/manager/$d{yyyy-MM-dd}.log"/>
+        <!-- 设置日志每天回滚一次，即产生一个新的日志文件 -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+        <!-- 设置日志输出的样式 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- 设置日志输出的格式 -->
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l]%n%m%n%n"/>
+        </layout>
+    </appender>
+
+</log4j:configuration>
