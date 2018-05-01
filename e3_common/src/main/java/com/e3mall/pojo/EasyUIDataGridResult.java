@@ -9,10 +9,17 @@ import java.util.List;
  */
 
 /**
- * 返回easyui视频的结果类
+ * 返回easyui数据的结果类
  */
 public class EasyUIDataGridResult implements Serializable {
+    /**
+     * 数据总量
+     */
     private long total;
+
+    /**
+     * 每页显示行数
+     */
     private List rows;
 
     public long getTotal() {

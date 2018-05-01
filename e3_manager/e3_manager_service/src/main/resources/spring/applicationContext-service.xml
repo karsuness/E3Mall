@@ -21,4 +21,5 @@
 
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:service interface="com.e3mall.service.ItemService" ref="itemService" timeout="60000"/>
+    <dubbo:service interface="com.e3mall.service.ItemCatService" ref="itemCatService" timeout="60000"/>
 </beans>
