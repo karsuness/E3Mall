@@ -48,6 +48,8 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!--引入dubbo服务-->
-    <dubbo:reference interface="com.e3mall.service.ItemService" id="itemService" check="false" timeout="12000"/>
-    <dubbo:reference interface="com.e3mall.service.ItemCatService" id="itemCatService" check="false" timeout="12000"/>
+    <dubbo:reference interface="com.e3mall.manager.service.ItemService" id="itemService" check="false" timeout="12000"/>
+    <dubbo:reference interface="com.e3mall.manager.service.ItemCatService" id="itemCatService" check="false" timeout="12000"/>
+    <dubbo:reference interface="com.e3mall.content.service.ContentCategoryService" id="contentCategoryService" check="false" timeout="12000"/>
+    <dubbo:reference interface="com.e3mall.content.service.ContentService" id="contentService" check="false" timeout="12000"/>
 </beans>
