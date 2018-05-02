@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -81,6 +82,43 @@ public class ItemServiceImpl implements ItemService {
         //向商品描述表插入数据
         tbItemDescMapper.insert(itemDesc);
         //返回成功
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result updateItem(TbItem item, String desc) {
+        return null;
+    }
+
+    @Override
+    public E3Result deleteItems(List<Long> ids) {
+        if (CollectionUtils.isEmpty(ids)) {
+            return E3Result.ok();
+        }
+        for (Long id : ids) {
+            tbItemMapper.deleteByPrimaryKey(id);
+            tbItemDescMapper.deleteByPrimaryKey(id);
+        }
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result itemInstock(List<Long> ids) {
+        for (Long id : ids) {
+            TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);
+            tbItem.setStatus(ItemStatusEnum.ITEM_UNDER_SALE.getStatus());
+            tbItemMapper.updateByPrimaryKey(tbItem);
+        }
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result itemReshelf(List<Long> ids) {
+        for (Long id : ids) {
+            TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);
+            tbItem.setStatus(ItemStatusEnum.ITEM_ON_SALE.getStatus());
+            tbItemMapper.updateByPrimaryKey(tbItem);
+        }
         return E3Result.ok();
     }
 }

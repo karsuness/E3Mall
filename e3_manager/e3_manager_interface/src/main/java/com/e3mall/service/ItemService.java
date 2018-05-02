@@ -9,6 +9,8 @@ import com.e3mall.common.pojo.EasyUIDataGridResult;
 import com.e3mall.common.pojo.TbItem;
 import com.e3mall.common.util.E3Result;
 
+import java.util.List;
+
 /**
  * item操作类
  */
@@ -35,4 +37,33 @@ public interface ItemService {
      * @return 封装结果
      */
     E3Result addItem(TbItem item, String desc);
+
+    /**
+     * 后台修改商品信息
+     * @param item 商品实例
+     * @param desc 商品描述
+     * @return 封装结果
+     */
+    E3Result updateItem(TbItem item,String desc);
+
+    /**
+     * 通过id删除商品
+     * @param ids id的list
+     * @return 封装结果
+     */
+    E3Result deleteItems(List<Long> ids);
+
+    /**
+     * 通过id商品上架
+     * @param ids id的list
+     * @return 封装结果
+     */
+    E3Result itemInstock(List<Long> ids);
+
+    /**
+     * 通过id商品下架
+     * @param ids id的list
+     * @return 封装结果
+     */
+    E3Result itemReshelf(List<Long> ids);
 }
