@@ -25,11 +25,11 @@
             <artifactId>e3_content_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.e3mall</groupId>
-            <artifactId>e3-search-interface</artifactId>
+            <artifactId>e3_search_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>-->
+        </dependency>
         <!-- JSP相关 -->
         <dependency>
             <groupId>jstl</groupId>

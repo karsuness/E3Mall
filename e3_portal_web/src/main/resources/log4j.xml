@@ -15,7 +15,7 @@
 
     <!-- common-default.log -->
     <appender name="defaultAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="D:/workspace/E3Mall/logs/manager/common-default.log"/>
+        <param name="file" value="D:/workspace/E3Mall/logs/portal-web/common-default.log"/>
         <param name="append" value="true"/>
         <param name="encoding" value="UTF-8"/>
         <param name="threshold" value="INFO"/>

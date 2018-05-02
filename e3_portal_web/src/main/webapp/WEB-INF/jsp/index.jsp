@@ -39,53 +39,13 @@
 	<div class="indexW">
       <div id="index_slide" class="slide_wrap">
 		<ol>
-			<c:forEach items="${ad1List}" var="node" varStatus="status">
+			<c:forEach items="${adList}" var="node" varStatus="status">
 			<li>
 			  <a name="sfbest_hp_hp_focus_${status.index }" class="fore_pic trackref" href="${node.url }" target="_blank"> 
 				<img id="lunbo_1" alt="${node.title }"	src="${node.pic }">
 			  </a>
 			</li>
 			</c:forEach>
-			<!-- <li>
-			  <a name="sfbest_hp_hp_focus_1" class="fore_pic trackref" href="/html/activity/1471934470.html" target="_blank"> 
-				<img id="lunbo_1" alt="8.30-9.5 月饼"	src="/images/html/aa472cb9f9624d22d1fcfd1c4dffbe42.jpg">
-			  </a>
-			</li>
-			<li><a name="sfbest_hp_hp_focus_2" class="fore_pic trackref"
-				href="/html/activity/1471514387.html" target="_blank"> <img
-					id="lunbo_2" alt="8.23-8.29大闸蟹"
-					src="/images/html/516e4d058d1d65a3506e179642297b2d.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_3" class="fore_pic trackref"
-				href="/html/activity/1472204196.html" target="_blank"> <img
-					id="lunbo_3" alt="8.30-9.5 中秋综合"
-					src="/images/html/e886f76e03f7a3596033eb34ca362339.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_4" class="fore_pic trackref"
-				href="/html/activity/1471934638.html" target="_blank"> <img
-					id="lunbo_4" alt="8.30-9.5 水果"
-					src="/images/html/757e35fab995b43c23b4396dc3ba4269.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_5" class="fore_pic trackref"
-				href="/html/activity/1472114146.html" target="_blank"> <img
-					id="lunbo_5" alt="8.30-9.5粮油"
-					src="/images/html/1748dcf682d7f595012e4309695d71d9.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_6" class="fore_pic trackref"
-				href="/html/activity/1472546864.html" target="_blank"> <img
-					id="lunbo_6" alt="8.30-9.5 酒水"
-					src="/images/html/de66a063548629c8d4e639523d8c9c6e.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_7" class="fore_pic trackref"
-				href="/html/activity/1471935715.html" target="_blank"> <img
-					id="lunbo_7" alt="8.30-9.5牛肉"
-					src="/images/html/600c425e04b41f49e451d2fdbafb6e45.jpg">
-			</a></li>
-			<li><a name="sfbest_hp_hp_focus_8" class="fore_pic trackref"
-				href="/html/activity/1471944414.html" target="_blank"> <img
-					id="lunbo_8" alt="8.27-8.29一元换购"
-					src="/images/html/4dd7317569a06a451c1fe7762d6bf928.jpg">
-			</a></li> -->
 		</ol>
 	</div>      
      <div class="rSide">	
@@ -106,17 +66,9 @@
 		   	  </div>   
  	</div>
       <ul class="none" id="lunboNum">
-      			<c:forEach items="${ad1List }" varStatus="status">
+      			<c:forEach items="${adList }" varStatus="status">
       			<li class="<c:if test="${status.index==0 }">cur</c:if>">${status.index+1 }</li>
       			</c:forEach>
-		        <!-- <li class="cur">1</li>
-		        <li class="">2</li>
-		        <li class="">3</li>
-		        <li class="">4</li>
-		        <li class="">5</li>
-		        <li class="">6</li>
-		        <li class="">7</li>
-		        <li class="">8</li> -->
 		      </ul>
       <div class="indexbg" id="indexbg">
       <dl style="left: -1903px;">
