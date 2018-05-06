@@ -14,9 +14,13 @@ import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +38,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private JedisHelper jedisHelper;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Resource
+    private Destination topicDestination;
 
     /**
      * item在redis中前缀
@@ -99,32 +109,43 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public E3Result addItem(TbItem item, String desc) {
-        //生成商品id
-        long itemId = IDUtils.genItemId();
-        //补全item的属性
+        // 1 获取商品的id
+        final long itemId = IDUtils.genItemId();
+        // 2补全属性
         item.setId(itemId);
-        //1-正常，2-下架，3-删除
+        // 1-正常，2-下架，3-删除
         item.setStatus(ItemStatusEnum.ITEM_ON_SALE.getStatus());
-        item.setCreated(new Date());
         item.setUpdated(new Date());
-        //向商品表插入数据
+        item.setCreated(new Date());
+        // 3添加到商品数据库中
         tbItemMapper.insert(item);
-        //创建一个商品描述表对应的pojo对象。
-        TbItemDesc itemDesc = new TbItemDesc();
-        //补全属性
-        itemDesc.setItemId(itemId);
-        itemDesc.setItemDesc(desc);
-        itemDesc.setCreated(new Date());
-        itemDesc.setUpdated(new Date());
-        //向商品描述表插入数据
-        tbItemDescMapper.insert(itemDesc);
-        //返回成功
+        // 4创建描述bean
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setCreated(new Date());
+        tbItemDesc.setUpdated(new Date());
+        // 插入到描述数据库中
+        tbItemDescMapper.insert(tbItemDesc);
+
+        // 发送商品添加消息
+        jmsTemplate.send(topicDestination, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                TextMessage textMessage = session.createTextMessage(itemId + "");
+                return textMessage;
+            }
+        });
         return E3Result.ok();
     }
 
     @Override
     public E3Result updateItem(TbItem item, String desc) {
-        return null;
+        tbItemMapper.updateByPrimaryKeySelective(item);
+        TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(item.getId());
+        tbItemDesc.setItemDesc(desc);
+        tbItemDescMapper.updateByPrimaryKey(tbItemDesc);
+        return E3Result.ok();
     }
 
     @Override

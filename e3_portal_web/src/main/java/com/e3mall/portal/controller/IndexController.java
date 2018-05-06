@@ -2,6 +2,7 @@ package com.e3mall.portal.controller;
 
 import com.e3mall.common.pojo.TbContent;
 import com.e3mall.content.service.ContentService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ public class IndexController {
     @Autowired
     private ContentService contentService;
 
+    @ApiOperation(notes = "显示商城首页",value = "/index")
     @RequestMapping("/index")
     public String showIndex(Model model){
         List<TbContent> adList = contentService.getContentListByCid(CONTENT_LUNBO_ID);
